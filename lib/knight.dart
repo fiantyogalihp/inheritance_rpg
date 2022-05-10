@@ -1,3 +1,4 @@
-import 'package:inheritance_rpg/character.dart';
+import 'package:inheritance_rpg/hero.dart';
+import 'package:inheritance_rpg/skill/schyte.dart';
 
-class Knight extends Character {}
+class Knight extends Hero with SlashSkill {}

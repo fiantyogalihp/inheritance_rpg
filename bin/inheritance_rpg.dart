@@ -2,6 +2,8 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:inheritance_rpg/hero.dart';
+import 'package:inheritance_rpg/knight.dart';
+import 'package:inheritance_rpg/skill/schyte.dart';
 import 'package:inheritance_rpg/test_dmg.dart';
 import 'package:inheritance_rpg/monster_type/goblin.dart';
 import 'package:inheritance_rpg/monster_type/kobold.dart';
@@ -16,9 +18,9 @@ void main(List<String> arguments) async {
   int choose = int.tryParse(stdin.readLineSync());
 
   Hero h = Hero();
-  Monsters m = Monsters();
   Kobold mk = Kobold();
   Goblin g = Goblin();
+  Knight k = Knight();
 
   List<Monsters> monsters = [];
 
@@ -26,26 +28,37 @@ void main(List<String> arguments) async {
   monsters.add(Goblin());
   monsters.add(Minotaur());
 
-  m.healthPoint = 70;
+  g.healthPoint = 70;
   h.healthPoint = 50;
   mk.healthPoint = 90;
   // mk.kLamBaseDmg;
   // m.eatHumanDmg;
   //jika valuenya null/ berdasarkan input, lgsg panggil saja propertynya
 
+  /** 
+    * * in = data yang ada dalam object yang dipanggil
+    * * as = data tersebut dideklarasikan sebagai data yang sama dengan data yang dipanggil (berbeda) 
+    * * is = data tersebut ditindih dan dideklarasikan datanya adalah data yang dipanggil
+    **/
+
   if (choose == knight) {
-    print('Monsters HP: ' + m.healthPoint.toString());
+    print('Monsters HP: ' + g.healthPoint.toString());
     print('Hero HP: ' + h.healthPoint.toString());
     print('Kobold HP: ' + mk.healthPoint.toString());
     print('Tiba tiba datang segerombolan monster dan memangsa human');
-    for (m in monsters) {
+    for (Monsters m in monsters) {
+      if (m is Schyte) {
+        print((m).schyteSkill());
+
+        print(k.slashSkill());
+      }
       if (m is Goblin || m is Minotaur) {
         //jika m adalah(termasuk) goblin atau minotaur maka print.
         print(m.eatHuman());
       }
     }
 
-    print('DMG gigitan: ' + m.eatHumanDmg().toString() + ' ' + m.eatHuman());
+    print('DMG gigitan: ' + g.eatHumanDmg().toString() + ' ' + g.eatHuman());
 
     print('\ntidak lama kemudian kobold datang dan menghantam mereka');
     print('DMG hantaman: ' + mk.kLamBaseDmg.toString());
@@ -89,3 +102,51 @@ void main(List<String> arguments) async {
     print('ANDA MEMASUKAN INPUT YANG SALAH!!');
   }
 }
+// 1. import library nya
+// include <iostream>
+
+// masukan perintah variable buat input
+// int? inputBeratBadan;
+// int? inputTinggiBadan;
+
+  // print('Selamat datang di Program penghitung BMI <nama mu> <kelas> \n');
+
+// command input di c++
+  // print('masukkan berat bdan anda (kg) :');
+  // double inputBeratBadan = double.tryParse(stdin.readLineSync(encoding: utf8));
+
+  // print('masukkan tinggi badan anda (m) :');
+  // double inputTinggiBadan = double.tryParse(stdin.readLineSync(encoding: utf8));
+
+  // print('Berat anda : ' + inputBeratBadan.toStringAsFixed(2));
+  // print('Tinggi anda : ' + inputTinggiBadan.toStringAsFixed(2));
+
+  // double bmiTinggi = (inputTinggiBadan * inputTinggiBadan);
+
+  // double bmi = inputBeratBadan / (bmiTinggi);
+
+  // print('jadi bmi anda adalah : ' +
+  //     bmi.toStringAsFixed(2) +
+  //     ', dan sesuai BMI anda tergolong :');
+
+  // if (bmi <= 18.5) {
+  //   print('Berat badan anda kurang');
+  // } else if (bmi >= 18.5) {
+  //   print('berat badan anda normal');
+  // } else if (bmi > 22.9) {
+  //   print('Anda cenderung Obesitas');
+  // } else if (bmi > 30) {
+  //   print('Anda Obesitas');
+  // } else if (bmi > 50) {
+  //   print('TIDAK TERTOLONG !!');
+  // }
+
+  // print('apakah anda ingin menghitung BMI lainnya?  [y/n?]');
+  // String answer = stdin.readLineSync();
+
+  // if (answer == 'y') {
+  //   var tryagain = true;
+  //   while (tryagain) {}
+  // }
+  
+  // print('terimakasih sudah menggunakan program ini');

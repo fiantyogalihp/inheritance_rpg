@@ -10,12 +10,9 @@ Random _random = Random();
 int _smallRandomDmg = _random.nextInt(max(1, 32));
 int _smallSwordDmg = _random.nextInt(max(1, 40));
 double _outputSkill;
-// = _smallSwordDmg + (_smallSwordDmg * 90 / 100);
 int _eatHumanDmg = 9;
 int _hBaseDmg = 5;
 int _baseSwordDmg;
-
-var _b;
 
 Hero h = Hero();
 
